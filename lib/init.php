@@ -19,7 +19,9 @@ function setup() {
   // Register wp_nav_menu() menus
   // http://codex.wordpress.org/Function_Reference/register_nav_menus
   register_nav_menus([
-    'primary_navigation' => __('Primary Navigation', 'sage')
+    'primary_navigation' => __('Primary Navigation', 'sage'),
+	'member_navigation' => __('Member Navigation', 'sage'),
+	'footer_navigation' => __('Footer Navigation', 'sage')
   ]);
 
   // Add post thumbnails
