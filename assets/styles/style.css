@@ -94,6 +94,8 @@ box-shadow:inset 0px 3px 3px #BBB; overflow:hidden;
 .top_slider img{ border-radius:10px 10px 0px 0px;  }
 .slider_caption { position:absolute; width:97%; margin:0px auto; top:40px; }
 .banner_sec { background-color:#e8e8e8; padding-bottom:20px; border-bottom:1px solid #bfbfbf;  }
+.banner_sec .banner_img { border: 1px solid #959595;border-radius: 10px 10px 0 0;box-shadow: 0 -1px 10px #959595;margin-top: 10px;overflow: hidden;}
+.banner_sec .banner_img img{ }
 .banner_text {float: right;
     width: 58%; /*background:url(images/after_banner_bg.jpg) repeat-x;*/ background-color:#C3C2C1; overflow:hidden; margin-bottom:10px; }
 .banner_text p { font-size:14px; color:#fff; text-transform:capitalize; padding:10px 15px; }
