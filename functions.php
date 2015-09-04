@@ -9,6 +9,8 @@
  *
  * @link https://github.com/roots/sage/pull/1042
  */
+
+
 $sage_includes = [
   'lib/utils.php',                 // Utility functions
   'lib/init.php',                  // Initial theme setup and constants
@@ -28,3 +30,16 @@ foreach ($sage_includes as $file) {
   require_once $filepath;
 }
 unset($file, $filepath);
+
+
+function limitar_palabras( $str, $num, $append_str='' ) {
+    $palabras = preg_split( '/[\s]+/', $str, -1, PREG_SPLIT_OFFSET_CAPTURE );
+    if( isset($palabras[$num][1]) ){
+        $str = substr( $str, 0, $palabras[$num][1] ) . $append_str;
+    }
+    unset( $palabras, $num );
+    return trim( $str );
+}
+
+session_start();
+$au = Am_Lite::getInstance();

@@ -85,7 +85,7 @@ msgid "Search"
 msgstr ""
 
 #. Theme Name of the plugin/theme
-msgid "Sage Starter Theme"
+msgid "Sage (ger) Starter Theme"
 msgstr ""
 
 #. Theme URI of the plugin/theme

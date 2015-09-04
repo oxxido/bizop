@@ -15,5 +15,7 @@
     <link rel="stylesheet" type="text/css" href="<?php bloginfo('template_url');?>/assets/flexslider.css"/>
     
     <link href="<?php bloginfo('template_url');?>/assets/styles/style.css" media="screen" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    
 	<?php wp_head(); ?>
 </head>

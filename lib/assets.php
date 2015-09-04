@@ -72,6 +72,9 @@ function assets() {
     wp_enqueue_script('comment-reply');
   }
 
+    //wp_enqueue_script('jquery', asset_path('scripts/modernizr.js'), [], null, true);
+    wp_enqueue_script('bootstrap', asset_path('bootstrap/js/bootstrap.min.js'), [], null, true);
+    wp_enqueue_script('flexslider', asset_path('scripts/jquery.flexslider-min.js'), [], null, true);
   wp_enqueue_script('modernizr', asset_path('scripts/modernizr.js'), [], null, true);
   wp_enqueue_script('sage_js', asset_path('scripts/main.js'), ['jquery'], null, true);
 }
