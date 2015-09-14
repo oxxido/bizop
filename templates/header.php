@@ -1,60 +1,52 @@
-<div class="container">
-    <div class="row ">
-        <div class="col-sm-7">
-            <div class="search_sec">
-                <form role="search" method="get" class="search-form form-inline" action="<?= esc_url(home_url('/')); ?>">
-                    <div class="input-group col-sm-12 text-right">
-                        <input class="search_box" name="s" id="search" value="<?= get_search_query(); ?>" value="" placeholder="Search our site" type="text">
-                        <button type="submit" class="search-submit"><img src="<?php bloginfo('template_url');?>/assets/images/search_butt.jpg" alt="" title="" class="search_btn" /></button>
-                    </div>
+<header id="header" class="clearfix">
+    <div class="headerTopBar clearfix">
+        <div class="wrapper">
+            <ul class="socialIcons">
+                <?php if(get_field('linkedin_url','options')){ ?>
+                    <li><a href="<?php the_field('linkedin_url','options');?>"><i class="fa fa-linkedin-square"></i></a></li>
+                <?php } ?>
+                <?php if(get_field('twitter_url','options')){ ?>
+                    <li><a href="<?php the_field('twitter_url','options');?>"><i class="fa fa-twitter"></i></a></li>
+                <?php } ?>
+                <?php if(get_field('pin_terest_url','options')){ ?>
+                    <li><a href="<?php the_field('pin_terest_url','options');?>"><i class="fa fa-pinterest-p"></i></a></li>
+                <?php } ?>
+                <?php if(get_field('facebook_url','options')){ ?>
+                    <li><a href="<?php the_field('facebook_url','options');?>"><i class="fa fa-facebook-f"></i></a></li>
+                <?php } ?>
+            </ul>
+            <?php
+            session_start();
+            $au = Am_Lite::getInstance();
+            if ( $au->isLoggedIn() ) {?>
+                <ul id="menu-toplinks" class="topLinks">
+                    <li id="menu-item-84" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-84">Welcome back, <?= $au->getName()?><a href='/amember/logout'>Logout</a></li>
+                </ul>
+            <?php } else {?>
+                <?php wp_nav_menu( array( 'menu_class' => 'topLinks', 'menu' => 'Toplinks','container'=>'false' ) ); ?>
+            <?php }?>
+            <div class="searchWrap">
+                <form role="search" method="get" class="search-form" action="<?php echo home_url( '/' ); ?>">
+                    <input type="search" class="search-field" placeholder="<?php echo esc_attr_x( 'Search …', 'placeholder' ) ?>" value="<?php echo get_search_query() ?>" name="s" title="<?php echo esc_attr_x( 'Search for:', 'label' ) ?>" />
+                    <input type="submit" class="search-submit" value="<?php echo esc_attr_x( 'Search', 'submit button' ) ?>" />
                 </form>
+                <a class="advanceSearch" href="#">Advanced Search</a>
             </div>
         </div>
-        <?php
-        session_start();
-        $au = Am_Lite::getInstance();
-        if ( $au->isLoggedIn() ) {?>
-
-            <div class="col-sm-3 text-right">Welcome back, <?= $au->getName()?></div>
-            <div class="col-sm-2 text-right"><a href='/amember/logout'>Logout</a></div>
-        <?php } else {?>
-            <form method=post action='/amember/login'>
-                <div class="col-sm-1">Username:</div>
-                <div class="col-sm-1"><input type='text' name='amember_login' size='5'></div>
-                <div class="col-sm-1">Password:</div>
-                <div class="col-sm-1"><input type='password' name='amember_pass' size='5'></div>
-                <input type='hidden' value='<?php bloginfo('url');?>' name='amember_redirect_url' />
-                <div class="col-sm-1"><input type=submit value='Login'></div>
-            </form>
-        <?php } ?>
     </div>
-    <div class="row">
-        <section class="menu_bg">
-            <nav class="menu_sec">
-                <header class="navbar navbar-inverse" role="banner">
-                    <div class="container">
-                        <div class="navbar-header">
-                            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
+    <div class="wrapper headerIn clearfix">
+        <a id="logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+            <img src="<?php bloginfo('template_url');?>/dist/images/logo.png" alt="" />
+        </a>
+        <a href="<?php the_field('submit_a_review','options'); ?>" class="btnReview">SUBMIT A REVIEW</a>
+        <div id="navbar" class="navbar">
+            <button class="menu-toggle"><i class="fa fa-navicon"></i> <?php _e( 'MENU', 'twentythirteen' ); ?></button>
+            <?php //wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu', 'menu_id' => 'primary-menu','container'=>'false' ) );
+            if (has_nav_menu('primary_navigation')) :
+                wp_nav_menu(['theme_location' => 'primary_navigation', 'menu_class' => 'nav-menu']);
+            endif;
+            ?>
 
-                        </div>
-                        <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
-                            <ul class="nav navbar-nav">
-                                <?php
-                                if (has_nav_menu('primary_navigation')) :
-                                    wp_nav_menu(['theme_location' => 'primary_navigation', 'menu_class' => 'nav navbar-nav']);
-                                endif;
-                                ?>
-                            </ul>
-                        </nav>
-                    </div>
-                </header>
-            </nav>
-        </section>
+        </div>
     </div>
-</div>
-<!-- end of menu_sec -->
+</header>

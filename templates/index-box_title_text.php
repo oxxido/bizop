@@ -1,15 +1,9 @@
-<div class="col-sm-3">
-    <div class="mid_sec">
-
-        <p><?php the_title(); ?></p>
-        <span><?php
-            $textoCorto =limitar_palabras(get_the_excerpt(), 20,'...' );
-            echo $textoCorto;
-            ?></span>
-        <span>Number Of Conversion (? - revisar)</span>
-        <span>Campaign Payout (? - revisar)</span>
-        <button class="r_more_g" onclick="location.href='<?php echo get_permalink($post->ID) ?>'">Learn More!</button>
-
+<li>
+    <a class="title" href="<?php echo get_permalink($post->ID) ?>"><?php the_title(); ?></a>
+    <p><?php $textoCorto =limitar_palabras(get_the_excerpt(), 20,'...' ); echo $textoCorto; ?></p>
+    <div class="convpayout">
+        <span class="conv">CONV. ACTION <span>12678</span></span>
+        <span class="payout">PAYOUT<span>$16.21</span></span>
     </div>
-
-</div>
+    <a class="button" href="<?php echo get_permalink($post->ID) ?>">LEARN MORE</a>
+</li>

@@ -1,19 +1,7 @@
-<div class="col-sm-3">
-    <div class="mid_sec">
-
-        <p><?php the_title(); ?></p>
-        <?php //the_post_thumbnail( array(350,350), $attr ); ?>
-        <img src="<?php echo wp_get_attachment_url( get_post_thumbnail_id($post->ID) );?>" />
-        <!--<img src="<?php //asset_path('images/about.png');?>>-->
-
-        <span>
-            <?php
-            $textoCorto =limitar_palabras(get_the_excerpt(), 20,'...' );
-            echo $textoCorto;
-            ?>
-        </span>
-        <button class="r_more_g" onclick="location.href='<?php echo get_permalink($post->ID) ?>'">Watch Now!</button>
-
-    </div>
-
-</div>
+<li>
+    <a href="#" class="video"><img src="<?php echo get_template_directory_uri(); ?>/dist/images/video-thumb.jpg" /></a>
+    <a class="title" href="<?php echo get_permalink($post->ID) ?>"><?php the_title(); ?></a>
+    <p><?php $textoCorto =limitar_palabras(get_the_excerpt(), 20,'...' ); echo $textoCorto; ?>
+    </p>
+    <a class="button" href="<?php echo get_permalink($post->ID) ?>">WATCH NOW</a>
+</li>
