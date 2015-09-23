@@ -26,6 +26,8 @@ use Roots\Sage\Wrapper;
             get_template_part('templates/footer');
             wp_footer();
         ?>
-        <div id="scroll_top"><i class="fa fa-chevron-up"></i></div>
+        <div class="scrollup btn-social btn-outline">
+            <i class="fa fa-arrow-up"></i>
+        </div>
     </body>
 </html>

@@ -32,6 +32,20 @@ foreach ($sage_includes as $file) {
 unset($file, $filepath);
 
 
+show_admin_bar(false);
+
+function permalink_url($id){
+    $search = array(1,2,3,4);
+    $is_pro_platinum= Am_Lite::getInstance()->haveSubscriptions($search)   ;
+    if ($is_pro_platinum == 1) {
+        $u = get_permalink($id);
+    }else{
+        $u = esc_url( home_url( '/' ) )."amember/signup/";
+    }
+    return $u;
+}
+
+
 function limitar_palabras( $str, $num, $append_str='' ) {
     $palabras = preg_split( '/[\s]+/', $str, -1, PREG_SPLIT_OFFSET_CAPTURE );
     if( isset($palabras[$num][1]) ){
@@ -222,4 +236,48 @@ if(function_exists("register_field_group"))
         ),
         'menu_order' => 0,
     ));
+}
+
+add_action( 'wp_ajax_my_action', 'wpse_126886_ajax_handler' );
+
+function wpse_126886_ajax_handler() {
+
+    // maybe check some permissions here, depending on your app
+    //if ( ! current_user_can( 'edit_posts' ) )
+    //    exit;
+
+    //$post_data = array();
+    //handle your form data here by accessing $_POST
+
+    $title     = $_POST['title'];
+    $content   = $_POST['content'];
+    $post_type = 'post';
+    $post_category = $_POST['reviewtype'];
+    //$campo = $_POST['campo_extra'];
+
+    $new_post = array(
+        'post_title'    => wp_strip_all_tags($title),
+        'post_content'  => wp_strip_all_tags($content),
+        'post_status'   => 'pending',
+        'post_type'     => $post_type,
+        'post_category' =>array($post_category)
+    );
+
+    $new_post_ID =wp_insert_post($new_post);
+
+    //$new_post_ID = wp_insert_post( $post_data );
+
+    // send some information back to the javascipt handler
+    $response = array(
+        'status' => '200',
+        'message' => 'OK',
+        'new_post_ID' => $new_post_ID,
+        'title' => $_POST['title']
+    );
+
+    // normally, the script expects a json respone
+    header( 'Content-Type: application/json; charset=utf-8' );
+    echo json_encode( $response );
+
+    exit; // important
 }

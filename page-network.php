@@ -9,53 +9,11 @@
     networks. These include comparative reviews as well as in-depth dives into what works and what doesn’t for many popular or niche networks.</p>
   <h2 class="listTitle"> <img src="<?php bloginfo('template_url');?>/dist/images/list-title-icon.jpg" alt="" /> ALL NETWORK REVIEWS </h2>
   <ul class="reviewList clearfix">
-    <li> <a href="#" class="title">Fusce imperdiet in los
-      maximus sed acceran</a>
-      <p>Nulla elementum odio in maximus sodales. Donec eu purus varius, accumsan tellus nec, feugiat justo. Sed accumsan pellentesque est, ac placerat sapien.</p>
-      <a href="#" class="button">VIEW NOW!</a> </li>
-    <li> <a href="#" class="title">Fusce imperdiet in los
-      maximus sed acceran</a>
-      <p>Nulla elementum odio in maximus sodales. Donec eu purus varius, accumsan tellus nec, feugiat justo. Sed accumsan pellentesque est, ac placerat sapien.</p>
-      <a href="#" class="button">VIEW NOW!</a> </li>
-    <li> <a href="#" class="title">Fusce imperdiet in los
-      maximus sed acceran</a>
-      <p>Nulla elementum odio in maximus sodales. Donec eu purus varius, accumsan tellus nec, feugiat justo. Sed accumsan pellentesque est, ac placerat sapien.</p>
-      <a href="#" class="button">VIEW NOW!</a> </li>
-    <li> <a href="#" class="title">Fusce imperdiet in los
-      maximus sed acceran</a>
-      <p>Nulla elementum odio in maximus sodales. Donec eu purus varius, accumsan tellus nec, feugiat justo. Sed accumsan pellentesque est, ac placerat sapien.</p>
-      <a href="#" class="button">VIEW NOW!</a> </li>
-    <li> <a href="#" class="title">Fusce imperdiet in los
-      maximus sed acceran</a>
-      <p>Nulla elementum odio in maximus sodales. Donec eu purus varius, accumsan tellus nec, feugiat justo. Sed accumsan pellentesque est, ac placerat sapien.</p>
-      <a href="#" class="button">VIEW NOW!</a> </li>
-    <li> <a href="#" class="title">Fusce imperdiet in los
-      maximus sed acceran</a>
-      <p>Nulla elementum odio in maximus sodales. Donec eu purus varius, accumsan tellus nec, feugiat justo. Sed accumsan pellentesque est, ac placerat sapien.</p>
-      <a href="#" class="button">VIEW NOW!</a> </li>
-    <li> <a href="#" class="title">Fusce imperdiet in los
-      maximus sed acceran</a>
-      <p>Nulla elementum odio in maximus sodales. Donec eu purus varius, accumsan tellus nec, feugiat justo. Sed accumsan pellentesque est, ac placerat sapien.</p>
-      <a href="#" class="button">VIEW NOW!</a> </li>
-    <li> <a href="#" class="title">Fusce imperdiet in los
-      maximus sed acceran</a>
-      <p>Nulla elementum odio in maximus sodales. Donec eu purus varius, accumsan tellus nec, feugiat justo. Sed accumsan pellentesque est, ac placerat sapien.</p>
-      <a href="#" class="button">VIEW NOW!</a> </li>
-    <li> <a href="#" class="title">Fusce imperdiet in los
-      maximus sed acceran</a>
-      <p>Nulla elementum odio in maximus sodales. Donec eu purus varius, accumsan tellus nec, feugiat justo. Sed accumsan pellentesque est, ac placerat sapien.</p>
-      <a href="#" class="button">VIEW NOW!</a> </li>
-    <li> <a href="#" class="title">Fusce imperdiet in los
-      maximus sed acceran</a>
-      <p>Nulla elementum odio in maximus sodales. Donec eu purus varius, accumsan tellus nec, feugiat justo. Sed accumsan pellentesque est, ac placerat sapien.</p>
-      <a href="#" class="button">VIEW NOW!</a> </li>
-    <li> <a href="#" class="title">Fusce imperdiet in los
-      maximus sed acceran</a>
-      <p>Nulla elementum odio in maximus sodales. Donec eu purus varius, accumsan tellus nec, feugiat justo. Sed accumsan pellentesque est, ac placerat sapien.</p>
-      <a href="#" class="button">VIEW NOW!</a> </li>
-    <li> <a href="#" class="title">Fusce imperdiet in los
-      maximus sed acceran</a>
-      <p>Nulla elementum odio in maximus sodales. Donec eu purus varius, accumsan tellus nec, feugiat justo. Sed accumsan pellentesque est, ac placerat sapien.</p>
-      <a href="#" class="button">VIEW NOW!</a> </li>
+      <?php if ( have_posts() ) : query_posts('&category_name=network&offset=0&posts_per_page=12');
+          while ( have_posts() ) : the_post();
+              $post_id = get_the_ID();
+              include(locate_template('templates/box_title_text.php'));
+          endwhile;
+      endif; ?>
   </ul>
 </div>

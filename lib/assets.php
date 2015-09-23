@@ -66,7 +66,7 @@ function asset_path($filename) {
 }
 
 function assets() {
-    wp_enqueue_style('bootstrap_css', asset_path('bootstrap/css/bootstrap.css'), false, null);
+    //wp_enqueue_style('bootstrap_css', asset_path('bootstrap/css/bootstrap.css'), false, null);
     wp_enqueue_style('theme_css', asset_path('styles/main.css'), false, null);
 
     if (is_single() && comments_open() && get_option('thread_comments')) {
@@ -74,7 +74,8 @@ function assets() {
     }
 
     //wp_enqueue_script('jquery', "https://code.jquery.com/jquery-2.1.4.min.js", [], null, true);
-    wp_enqueue_script('bootstrap', asset_path('bootstrap/js/bootstrap.min.js'), [], null, true);
+    //wp_enqueue_script('bootstrap', asset_path('bootstrap/js/bootstrap.min.js'), [], null, true);
+    wp_enqueue_script('bootstrap', asset_path('scripts/jquery.validate.min.js'), [], null, true);
     wp_enqueue_script('flexslider', asset_path('scripts/jquery.flexslider-min.js'), [], null, true);
     wp_enqueue_script('modernizr', asset_path('scripts/modernizr.js'), [], null, true);
     wp_enqueue_script('sage_js', asset_path('scripts/main.js'), ['jquery'], null, true);

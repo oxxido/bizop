@@ -5,17 +5,7 @@
  */
 ?>
 
-<div class="pageBanner"> <img src="<?php the_field('page_banner'); ?>" alt="" />
-  <div class="wrapper">
-    <div class="pageTitle">
-      <div class="bnrContent">
-        <h1>
-          <?php the_title(); ?>
-        </h1>
-      </div>
-    </div>
-  </div>
-</div>
+<?php get_template_part('templates/banner_pages'); ?>
 <div class="wrapper pageMiddle shignUp">
 	<h2 class="secTitle">You are just one step away from subscribing to the Platinum Plan!</h2>
 	<div class="leftCol signUp">

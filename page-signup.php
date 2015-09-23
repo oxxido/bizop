@@ -6,17 +6,7 @@
  */
 ?>
 
-<div class="pageBanner"> <img src="<?php the_field('page_banner'); ?>" alt="" />
-  <div class="wrapper">
-    <div class="pageTitle">
-      <div class="bnrContent">
-        <h1>
-          <?php the_title(); ?>
-        </h1>
-      </div>
-    </div>
-  </div>
-</div>
+<?php get_template_part('templates/banner_pages'); ?>
 <div class="wrapper pageMiddle">
   <div class="clearfix">
     <p class="lead a-center small"> Start experiencing the benefits of being a Biz Op Reports member. <br/>
