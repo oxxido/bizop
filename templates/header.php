@@ -8,11 +8,17 @@
                 <?php if(get_field('twitter_url','options')){ ?>
                     <li><a href="<?php the_field('twitter_url','options');?>"><i class="fa fa-twitter"></i></a></li>
                 <?php } ?>
+                <?php if(get_field('google_plus_url','options')){ ?>
+                    <li><a href="<?php the_field('google_plus_url','options');?>"><i class="fa fa-google-plus"></i></a></li>
+                <?php } ?>
                 <?php if(get_field('pin_terest_url','options')){ ?>
                     <li><a href="<?php the_field('pin_terest_url','options');?>"><i class="fa fa-pinterest-p"></i></a></li>
                 <?php } ?>
                 <?php if(get_field('facebook_url','options')){ ?>
                     <li><a href="<?php the_field('facebook_url','options');?>"><i class="fa fa-facebook-f"></i></a></li>
+                <?php } ?>
+                <?php if(get_field('youtube_url','options')){ ?>
+                    <li><a href="<?php the_field('youtube_url','options');?>"><i class="fa fa-youtube"></i></a></li>
                 <?php } ?>
             </ul>
             <?php

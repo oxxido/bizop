@@ -35,7 +35,7 @@
     <div class="wrapper clearfix">
         <?php if(get_field('about_us_text','options')): ?>
             <div class="ftBox about">
-                <h3>About Us</h3>
+                <h3><a href="<?php echo esc_url( home_url( '/' ) ); ?>about-us/">About Us</a></h3>
                 <?php the_field('about_us_text','options'); ?>
             </div>
         <?php endif; ?>
@@ -43,7 +43,7 @@
         <?php wp_reset_query(); ?>
         <div class="ftBox latestBlog">
             <h3>Latest Blog Posts</h3>
-            <?php query_posts(array('post_type'=>'post', 'showposts' => '4', 'order' => 'DESC') ); ?>
+            <?php query_posts(array('category_name'=>'featured-blog-posts', 'showposts' => '4', 'order' => 'DESC') ); ?>
             <?php if (have_posts()) { ?>
                 <ul class="links">
                     <?php  while (have_posts()){ the_post(); ?>
@@ -74,8 +74,8 @@
             <?php if(get_field('google_plus_url','options')){ ?>
                 <li><a href="<?php the_field('google_plus_url','options');?>" target="_blank"><i class="fa fa-google-plus-square"></i></a></li>
             <?php } ?>
-            <?php if(get_field('youtube_icon','options')){ ?>
-                <li><a href="<?php the_field('youtube_icon','options');?>" target="_blank"><i class="fa fa-youtube-square"></i></a></li>
+            <?php if(get_field('youtube_url','options')){ ?>
+                <li><a href="<?php the_field('youtube_url','options');?>" target="_blank"><i class="fa fa-youtube-square"></i></a></li>
             <?php } ?>
         </ul>
     </div>
