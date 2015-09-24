@@ -5,8 +5,7 @@
 ?>
 <?php get_template_part('templates/banner_pages'); ?>
 <div class="wrapper pageMiddle">
-	<div class="lead small">You may have a great offer or campaign in mind, but the network you run offers or advertise on can make all the difference in your success. We will find the networks that have the fastest payouts, highest EPCs, and pre-approved offers that actually convert! Additionally, we will let you know of the networks you probably should avoid, so you feel confident in your affiliate network choice(s). Below, you will find ours and member's approved recommendations for
-		networks. These include comparative reviews as well as in-depth dives into what works and what doesn’t for many popular or niche networks.
+	<div class="lead small">
     </div>
 	<h2 class="listTitle"> <img src="<?php bloginfo('template_url');?>/dist/images/yellow-star.jpg" alt="" /> ALL DAVE’S PICKS </h2>
 	<ul class="reviewList clearfix">

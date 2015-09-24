@@ -6,7 +6,9 @@
 ?>
 <?php get_template_part('templates/banner_pages'); ?>
 <div class="wrapper pageMiddle">
-  <p class="lead small">Not all of your opportunities lie in affiliate marketing; there are other business opportunities and MLMs to keep your eye out for. Below, you will find ours and other member’s approved recommendations for biz ops and MLMs. These include comparative reviews and in-depth analysis’ to support a decision to go or not to go with an opportunity, so you can make a decision on which opportunities might be worth investing in.</p>
+  <p class="lead small">Not all offers are created equal. It might come in handy to have the segmentation of mobile vs. desktop offers, and even further knowledge of what creative
+performs best for each offer. We look for clicks, conversions, and payouts to make sure you don’t waste time and money running offers that don’t convert!
+We hope you find these approved reviews from ourselves and others useful, and look forward to hearing of your success with these offers.</p>
   <h2 class="listTitle"> <img src="<?php bloginfo('template_url');?>/dist/images/mobile-icon.jpg" alt="" /> TOP MOBILE OFFERS </h2>
   <ul class="reviewList clearfix">
       <?php
@@ -19,8 +21,10 @@
       );
       if ( have_posts() ) : query_posts($args_mobile_offer);
           while ( have_posts() ) : the_post();
+              $payout = 1;
               include(locate_template('templates/box_title_text.php'));
           endwhile;
+      $payout = 0;
       endif; ?>
   </ul>
   <h2 class="listTitle"> <img src="<?php bloginfo('template_url');?>/dist/images/desktop-icon.jpg" alt="" /> TOP DESKTOP OFFERS </h2>
@@ -35,8 +39,10 @@
       );
       if ( have_posts() ) : query_posts($args_desktop_offer);
           while ( have_posts() ) : the_post();
+              $payout = 1;
               include(locate_template('templates/box_title_text.php'));
           endwhile;
+          $payout = 0;
       endif; ?>
   </ul>
   <h2 class="listTitle"> <img src="<?php bloginfo('template_url');?>/dist/images/bulb-icon.jpg" alt="" /> TOP CREATIVE FOR OFFERS </h2>
@@ -51,8 +57,10 @@
       );
       if ( have_posts() ) : query_posts($args_offer_creative);
           while ( have_posts() ) : the_post();
+              $payout = 1;
               include(locate_template('templates/box_title_text.php'));
           endwhile;
+          $payout = 0;
       endif; ?>
   </ul>
 </div>
