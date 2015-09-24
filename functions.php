@@ -40,7 +40,7 @@ function permalink_url($id){
     if ($is_pro_platinum == 1) {
         $u = get_permalink($id);
     }else{
-        $u = esc_url( home_url( '/' ) )."amember/signup/";
+        $u = esc_url( home_url( '/' ) )."amember/login/";
     }
     return $u;
 }
@@ -252,7 +252,8 @@ function wpse_126886_ajax_handler() {
     $title     = $_POST['title'];
     $content   = $_POST['content'];
     $post_type = 'post';
-    $post_category = $_POST['reviewtype'];
+    $post_category = $_POST['reviewtype'].',1';
+    
     //$campo = $_POST['campo_extra'];
 
     $new_post = array(

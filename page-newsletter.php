@@ -28,22 +28,16 @@
     <div class="rightCol">
       <div class="listArchive">
         <h3>ARCHIVES</h3>
-        <ul>
-          <li> <a href="#" class="title">Fusce imperdiet in los
-            maximus sed acceran</a> <span class="date">04/08/2015</span> </li>
-          <li> <a href="#" class="title">Fusce imperdiet in los
-            maximus sed acceran</a> <span class="date">04/08/2015</span> </li>
-          <li> <a href="#" class="title">Fusce imperdiet in los
-            maximus sed acceran</a> <span class="date">04/08/2015</span> </li>
-          <li> <a href="#" class="title">Fusce imperdiet in los
-            maximus sed acceran</a> <span class="date">04/08/2015</span> </li>
-          <li> <a href="#" class="title">Fusce imperdiet in los
-            maximus sed acceran</a> <span class="date">04/08/2015</span> </li>
-          <li> <a href="#" class="title">Fusce imperdiet in los
-            maximus sed acceran</a> <span class="date">04/08/2015</span> </li>
-          <li> <a href="#" class="title">Fusce imperdiet in los
-            maximus sed acceran</a> <span class="date">04/08/2015</span> </li>
-        </ul>
+          <?php if ( have_posts() ) : query_posts('&category_name=newsletter&offset=0'); ?>
+              <ul>
+              <?php while ( have_posts() ) : the_post();?>
+                  <li>
+                      <a class="title" href="<?php echo get_permalink($post->ID) ?>"><?php the_title(); ?></a>
+                      <span class="date"><?php echo get_the_date("d/m/Y") ?></span>
+                  </li>
+              <?php endwhile; ?>
+              </ul>
+          <?php endif; ?>
       </div>
     </div>
   </div>

@@ -1,8 +1,7 @@
 <?php
-/**
- * Template Name: Search Page 2222
- *
- */
+/*
+Template Name: Search Page
+*/
 ?>
 
 <?php
@@ -17,6 +16,25 @@ foreach($query_args as $key => $string) {
 } // foreach
 
 $search = new WP_Query($search_query);
+
+
+$args_scams = array('s' => $_GET['s']);
+
+if (isset($_GET['type'])) {
+    $order = 'ASC';
+
+    if (isset($_GET['order']) && $_GET['order'] == "best") {
+        $order = 'DESC';
+    }
+
+    $args_scams = array(
+        'category_name' => $_GET['type'],
+        'meta_key' => 'ratings_average',
+        'orderby' => 'meta_value_num',
+        'order' => $order,
+        's' => $_GET['s']
+    );
+}
 ?>
 
 <?php get_template_part('templates/banner_pages'); ?>
@@ -26,11 +44,12 @@ $search = new WP_Query($search_query);
           <div class="listNewsLetter">
               <?php if ( have_posts() ) : ?>
                   <ul>
-                      <?php //get_template_part('templates/page', 'header'); ?>
-                      <?php /* The loop */ ?>
-                      <?php while ( have_posts() ) : the_post(); ?>
-                          <?php get_template_part('templates/content', 'search'); ?>
-                      <?php endwhile; ?>
+                      <?php
+                      if ( have_posts() ) : query_posts($args_scams);
+                        while ( have_posts() ) : the_post();
+                          get_template_part('templates/content', 'search');
+                        endwhile;
+                      endif; ?>
                   </ul>
                   <?php the_posts_navigation(); ?>
 

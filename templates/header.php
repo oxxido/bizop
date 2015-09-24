@@ -35,8 +35,40 @@
                 <form role="search" method="get" class="search-form" action="<?php echo home_url( '/' ); ?>">
                     <input type="search" class="search-field" placeholder="<?php echo esc_attr_x( 'Search …', 'placeholder' ) ?>" value="<?php echo get_search_query() ?>" name="s" title="<?php echo esc_attr_x( 'Search for:', 'label' ) ?>" />
                     <input type="submit" class="search-submit" value="<?php echo esc_attr_x( 'Search', 'submit button' ) ?>" />
+
+                <a class="advanceSearch" href="#" onclick="jQuery('#advance-cnt').show();">Advanced Search</a>
+                <div class="advance-cnt" id="advance-cnt">
+                    <p class="close-btn"><a role="button" onclick="jQuery('#advance-cnt').hide();">X</a></p>
+                    <div class="searchfrmInput">
+                        <label class="lbl">Order of results</label>
+                        <input type="radio" value="best" name="order" />
+                        <label for="best">Best</label>
+                        <input type="radio" value="worst" name="order"  />
+                        <label for="worst">Worst</label>
+                    </div>
+                    <div class="searchfrmInput">
+                        <label class="lbl">Type:</label>
+                        <input type="radio" value="offer"  name="type" />
+                        <label for="Offer">Offer</label>
+                        <br/>
+                        <input type="radio" value="network" name="type"  />
+                        <label for="Network">Network</label>
+                        <br/>
+                        <input type="radio" value="biz-op" name="type"  />
+                        <label for="BizOp">BizOp</label>
+                        <br/>
+                        <input type="radio" value="mlm" name="type"  />
+                        <label for="MLM">MLM</label>
+                        <br/>
+                        <input type="radio" value="offer-creative" name="type"  />
+                        <label for="Creative">Creative</label>
+                        <br/>
+                        <input type="radio" value="daves-picks" name="type" />
+                        <label for="Dave’s Picks">Dave’s Picks</label>
+                    </div>
+                    <p class="bottom-btn"> <button class="button">Go</button></p>
+                </div>
                 </form>
-                <a class="advanceSearch" href="#">Advanced Search</a>
             </div>
         </div>
     </div>

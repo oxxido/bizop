@@ -9,7 +9,7 @@ $feature_blog_posts = get_category_by_slug( 'featured-blog-posts' );
 $top_campaign_reviews = get_category_by_slug( 'top-campaign-reviews' );
 ?>
 
-<div class="pageBanner <?php if ( !$au->isLoggedIn() ) { echo 'homeBanner'; }?>" style="background-image: url('<?php the_field('page_banner'); ?>')">
+<div class="pageBanner hg <?php if ( !$au->isLoggedIn() ) { echo 'homeBanner'; }?>" style="background-image: url('<?php the_field('page_banner'); ?>')">
     <div class="wrapper">
         <div class="pageTitle">
             <div class="bnrContent">
