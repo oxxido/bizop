@@ -14,7 +14,7 @@ $top_campaign_reviews = get_category_by_slug( 'top-campaign-reviews' );
         <div class="pageTitle">
             <div class="bnrContent">
             <?php if ( $au->isLoggedIn() ) {?>
-                <h1>Member Dasboard</h1>
+                <h1>Member Dashboard</h1>
                 <h3>Registered User: <span><?= $au->getName()?></span></h3>
             <?php }else{ ?>
                 <h1>Stop Wasting Money on Programs That Don’t Work!</h1>
@@ -47,7 +47,7 @@ $top_campaign_reviews = get_category_by_slug( 'top-campaign-reviews' );
         </ul>
     </div>
 
-    <div id="scamsAvoid" class="listinhome">
+    <!-- <div id="scamsAvoid" class="listinhome">
         <h2 class="listTitle"><img class="btn" src="<?php echo get_template_directory_uri(); ?>/dist/images/scams-ico.png" alt="" /> SCAMS TO AVOID</h2>
         <ul class="reviewList clearfix">
             <?php
@@ -60,11 +60,11 @@ $top_campaign_reviews = get_category_by_slug( 'top-campaign-reviews' );
             );
             if ( have_posts() ) : query_posts($args_scams);
                 while ( have_posts() ) : the_post();
-                    include(locate_template('templates/box_feature_title_text.php'));
+                    //include(locate_template('templates/box_feature_title_text.php'));
                 endwhile;
             endif; ?>
         </ul>
-    </div>
+    </div> -->
 
     <div id="futuredPost" class="listinhome">
         <h2 class="listTitle"><img class="btn" src="<?php echo get_template_directory_uri(); ?>/dist/images/featured-ico.png" alt="" /> FEATURED BLOG POSTS</h2>
