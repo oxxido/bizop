@@ -26,7 +26,7 @@
             $au = Am_Lite::getInstance();
             if ( $au->isLoggedIn() ) {?>
                 <ul id="menu-toplinks" class="topLinks">
-                    <li id="menu-item-84" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-84">Welcome back, <?= $au->getName()?><a href='/amember/logout'>Logout</a></li>
+                    <li id="menu-item-84" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-84">Welcome back, <?= $au->getName()?> <a href='/amember/profile'>My Account</a> <a href='/amember/logout'>Logout</a></li>
                 </ul>
             <?php } else {?>
                 <?php wp_nav_menu( array( 'menu_class' => 'topLinks', 'menu' => 'Toplinks','container'=>'false' ) ); ?>

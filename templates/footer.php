@@ -24,9 +24,9 @@
         //]]>
     </script>
     <div class="wrapper newsletter newsletter-subscription">
-        <form method="post" action="http://sanjay/wordpress/bizopreports/wp-content/plugins/newsletter/do/subscribe.php" onsubmit="return newsletter_check(this)">
-            <span class="label">Subscribe to our FREE newsletter and learn how you can make money today</span>
-            <input class="inputBox" type="email" name="ne" size="30" required>
+        <form method="post" action="/wp-content/plugins/newsletter/do/subscribe.php" onsubmit="return newsletter_check(this)">
+            <span class="label">Subscribe to our FREE e-newsletter and learn how you can make money today</span>
+            <input class="inputBox" type="email" name="ne" size="30" placeholder="Email Address" required >
             <input class="button orgbut" type="submit" value="GO"/>
         </form>
     </div>
