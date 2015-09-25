@@ -33,13 +33,30 @@
 </div>
 <footer id="footer" role="contentinfo">
     <div class="wrapper clearfix">
-        <?php if(get_field('about_us_text','options')): ?>
+        <?php /*if(get_field('about_us_text','options')): ?>
             <div class="ftBox about">
                 <!-- <h3><a href="<?php echo esc_url( home_url( '/' ) ); ?>about-us/">About Us</a></h3> -->
                 <h3><a href="<?php echo esc_url( home_url( '/' ) ); ?>newsletter/">Newsletter</a></h3>
                 <?php the_field('about_us_text','options'); ?>
             </div>
-        <?php endif; ?>
+        <?php endif; */?>
+
+
+        <!-- newsletter instead of about us-->
+        <?php if ( have_posts() ) : query_posts('&category_name=newsletter&offset=0'); ?>
+            <div class="ftBox about">
+            <h3><a href="<?php echo esc_url( home_url( '/' ) ); ?>newsletter/">Newsletter</a></h3>
+              <ul  class="links">
+              <?php while ( have_posts() ) : the_post();?>
+                  <li>
+                      <a class="title" href="<?php echo get_permalink($post->ID) ?>"><?php the_title(); ?></a>
+                      
+                  </li>
+              <?php endwhile; ?>
+              </ul>
+            </div>
+          <?php endif; ?>
+        <!-- END newsletter-->
 
         <?php wp_reset_query(); ?>
         <div class="ftBox latestBlog">
