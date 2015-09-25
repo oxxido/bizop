@@ -57,15 +57,8 @@ if (isset($_GET['type'])) {
                     <?php the_posts_navigation(); ?>
 
                 <?php else : ?>
-                    <h3><?php _e('Sorry, no results were found.', 'sage'); ?></h3>
-                    <div class="searchfrmInput">
-                        <label class="lbl">Your Search Query</label>
-                        <form role="search" method="get" class="search-form" action="<?php echo home_url( '/' ); ?>">
-                            <input type="search" class="search-field" placeholder="<?php echo esc_attr_x( 'Search …', 'placeholder' ) ?>" value="<?php echo get_search_query() ?>" name="s" title="<?php echo esc_attr_x( 'Search for:', 'label' ) ?>" />
-                            <input type="submit" class="search-submit" value="<?php echo esc_attr_x( 'Search', 'submit button' ) ?>" />
-                        </form>
-                        <a class="advanceSearch" href="#">Advanced Search</a>
-                    </div>
+                    <p class="lead media"><?php _e('Sorry, no results were found.', 'sage'); ?></p>
+                    <?php get_search_form(); ?>
                 <?php endif; ?>
             </div>
         </div>
@@ -76,6 +69,7 @@ if (isset($_GET['type'])) {
                     <div class="searchfrmInput">
                         <label class="lbl">Your Search Query</label>
                         <input type="text" value="<?php echo get_search_query() ?>" name="s" title="<?php echo esc_attr_x( 'Search for:', 'label' ) ?>" />
+                        <button class="button">Go</button>
                     </div>
                     <div class="searchfrmInput">
                         <label class="lbl">Order of results</label>
