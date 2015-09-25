@@ -42,7 +42,7 @@
 
         <?php wp_reset_query(); ?>
         <div class="ftBox latestBlog">
-            <h3>Latest Blog Posts</h3>
+            <h3><a href="<?php echo esc_url( home_url( '/' ) ); ?>blog/">Latest Blog Posts</a></h3>
             <?php query_posts(array('category_name'=>'featured-blog-posts', 'showposts' => '4', 'order' => 'DESC') ); ?>
             <?php if (have_posts()) { ?>
                 <ul class="links">
