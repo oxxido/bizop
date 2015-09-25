@@ -10,8 +10,11 @@
 	<h2 class="listTitle"> <img src="<?php bloginfo('template_url');?>/dist/images/yellow-star.jpg" alt="" /> ALL DAVE’S PICKS </h2>
 	<ul class="reviewList clearfix">
         <?php
-        $cat_futuredReview_IDs = get_category_by_slug('daves-picks')->term_id;
-        print_r($cat_futuredReview_IDs);
+        $cat_futuredReview_IDs = get_category_by_slug('network')->term_id;
+        $cat_futuredReview_IDs .= ',' . get_category_by_slug('biz-op')->term_id;
+        $cat_futuredReview_IDs .= ',' . get_category_by_slug('offer')->term_id;
+        //$cat_futuredReview_IDs = get_category_by_slug('daves-picks')->term_id;
+        //print_r($cat_futuredReview_IDs);
         $args_reviews = array(
             'cat'  => $cat_futuredReview_IDs,
             'posts_per_page'   => '4',
@@ -28,8 +31,9 @@
 	<h2 class="listTitle"> <img src="<?php bloginfo('template_url');?>/dist/images/yellow-star.jpg" alt="" /> DAVE’S OFFER PICKS </h2>
 	<ul class="reviewList clearfix">
         <?php
-        $cat_futuredReview_IDs = get_category_by_slug('daves-offer-picks')->term_id;
-        print_r($cat_futuredReview_IDs);
+        //$cat_futuredReview_IDs = get_category_by_slug('daves-offer-picks')->term_id;
+        $cat_futuredReview_IDs = get_category_by_slug('offer')->term_id;
+        //print_r($cat_futuredReview_IDs);
         $args_reviews = array(
             'cat'  => $cat_futuredReview_IDs,
             'posts_per_page'   => '4',
@@ -46,8 +50,9 @@
 	<h2 class="listTitle"> <img src="<?php bloginfo('template_url');?>/dist/images/yellow-star.jpg" alt="" /> DAVE’S NETWORK PICKS </h2>
 	<ul class="reviewList clearfix">
         <?php
-        $cat_futuredReview_IDs = get_category_by_slug('daves-network-picks')->term_id;
-        print_r($cat_futuredReview_IDs);
+        //$cat_futuredReview_IDs = get_category_by_slug('daves-network-picks')->term_id;
+        $cat_futuredReview_IDs = get_category_by_slug('network')->term_id;
+        //print_r($cat_futuredReview_IDs);
         $args_reviews = array(
             'cat'  => $cat_futuredReview_IDs,
             'posts_per_page'   => '4',
@@ -64,8 +69,9 @@
 	<h2 class="listTitle"> <img src="<?php bloginfo('template_url');?>/dist/images/yellow-star.jpg" alt="" /> DAVE’S BIZ OP/MLM PICKS </h2>
 	<ul class="reviewList clearfix">
         <?php
-        $cat_futuredReview_IDs = get_category_by_slug('daves-biz-op-mlm-picks')->term_id;
-        print_r($cat_futuredReview_IDs);
+        //$cat_futuredReview_IDs = get_category_by_slug('daves-biz-op-mlm-picks')->term_id;
+        $cat_futuredReview_IDs = get_category_by_slug('biz-op')->term_id;
+        //print_r($cat_futuredReview_IDs);
         $args_reviews = array(
             'cat'  => $cat_futuredReview_IDs,
             'posts_per_page'   => '4',
