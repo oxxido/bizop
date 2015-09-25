@@ -242,33 +242,31 @@ add_action( 'wp_ajax_my_action', 'wpse_126886_ajax_handler' );
 
 function wpse_126886_ajax_handler() {
 
-    // maybe check some permissions here, depending on your app
-    //if ( ! current_user_can( 'edit_posts' ) )
-    //    exit;
-
-    //$post_data = array();
-    //handle your form data here by accessing $_POST
+    $search = array(3,4);
+    $is_pro_platinum= Am_Lite::getInstance()->haveSubscriptions($search)   ;
+    if ($is_pro_platinum != 1)
+        exit;
 
     $title     = $_POST['title'];
     $content   = $_POST['content'];
     $post_type = 'post';
-    $post_category = $_POST['reviewtype'].',1';
-    
-    //$campo = $_POST['campo_extra'];
+    $post_category = $_POST['reviewtype'];
+    $status = 'pending';
+    if ($_POST['reviewpublic'] == "private"){ $status = "private";}
 
     $new_post = array(
         'post_title'    => wp_strip_all_tags($title),
         'post_content'  => wp_strip_all_tags($content),
         'post_status'   => 'pending',
         'post_type'     => $post_type,
-        'post_category' =>array($post_category)
+        'post_category' =>array($post_category,get_category_by_slug('recent-reviews')->term_id)
     );
 
     $new_post_ID =wp_insert_post($new_post);
 
     //$new_post_ID = wp_insert_post( $post_data );
 
-    // send some information back to the javascipt handler
+    // send some information back to the javascript handler
     $response = array(
         'status' => '200',
         'message' => 'OK',
