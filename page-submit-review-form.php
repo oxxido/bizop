@@ -38,8 +38,8 @@ if ($is_pro_platinum == 1){ ?>
         <textarea class="wp-editor-area" rows="20" cols="40" name="content" id="content"></textarea>
       </div>
       <div class="input clearfix displayStatus radioGrup">
-          <p><input type="radio" name="campo_extra" id="public" /> <label  for="public">Please make my review public</label></p>
-          <p><input type="radio" name="campo_extra" id="private" /> <label  for="private">Please make my review private</label></p>
+          <p><input type="radio" name="reviewpublic" value="public" /> <label  for="public">Please make my review public</label></p>
+          <p><input type="radio" name="reviewpublic" value="private" /> <label  for="private">Please make my review private</label></p>
       </div>
       <input type="submit" value="" class="btnSubReview" /><img src="<?php echo get_template_directory_uri(); ?>/dist/images/ajax-loader.gif" class="loadingForm"/>
         </form>
@@ -48,33 +48,16 @@ if ($is_pro_platinum == 1){ ?>
         <h2 class="status"></h2>
     </div>
     <div class="listReview">
-      <h3 class="title"><img src="<?php bloginfo('template_url'); ?>/dist/images/list-title-icon.jpg" alt=""/>RECENT REVIEWS</h3>
-      <ul class="listRecentReview">
-        <li> <a href="#" class="title">Fusce imperdiet in los
-          maximus sed acceran</a>
-          <p>Nulla elementum odio in maximus sodales. Donec eu purus varius, accumsan tellus nec.</p>
-          <span class="dateAndName"> 04/08/2015 - John Doe </span>
-          <div class="score"> <span class="up"><img src="<?php bloginfo('template_url'); ?>/dist/images/thumb-up.jpg" alt=""/></span><span class="down"><img src="<?php bloginfo('template_url'); ?>/dist/images/thumb-down.jpg" alt=""/></span> </div>
-          <a href="#" class="button">VIEW NOW!</a> </li>
-        <li> <a href="#" class="title">Fusce imperdiet in los
-          maximus sed acceran</a>
-          <p>Nulla elementum odio in maximus sodales. Donec eu purus varius, accumsan tellus nec.</p>
-          <span class="dateAndName"> 04/08/2015 - John Doe </span>
-          <div class="score"> <span class="up"><img src="<?php bloginfo('template_url'); ?>/dist/images/thumb-up.jpg" alt=""/></span><span class="down"><img src="<?php bloginfo('template_url'); ?>/dist/images/thumb-down.jpg" alt=""/></span> </div>
-          <a href="#" class="button">VIEW NOW!</a> </li>
-        <li> <a href="#" class="title">Fusce imperdiet in los
-          maximus sed acceran</a>
-          <p>Nulla elementum odio in maximus sodales. Donec eu purus varius, accumsan tellus nec.</p>
-          <span class="dateAndName"> 04/08/2015 - John Doe </span>
-          <div class="score"> <span class="up"><img src="<?php bloginfo('template_url'); ?>/dist/images/thumb-up.jpg" alt=""/></span><span class="down"><img src="<?php bloginfo('template_url'); ?>/dist/images/thumb-down.jpg" alt=""/></span> </div>
-          <a href="#" class="button">VIEW NOW!</a> </li>
-        <li> <a href="#" class="title">Fusce imperdiet in los
-          maximus sed acceran</a>
-          <p>Nulla elementum odio in maximus sodales. Donec eu purus varius, accumsan tellus nec.</p>
-          <span class="dateAndName"> 04/08/2015 - John Doe </span>
-          <div class="score"> <span class="up"><img src="<?php bloginfo('template_url'); ?>/dist/images/thumb-up.jpg" alt=""/></span><span class="down"><img src="<?php bloginfo('template_url'); ?>/dist/images/thumb-down.jpg" alt=""/></span> </div>
-          <a href="#" class="button">VIEW NOW!</a> </li>
-      </ul>
+      <h3 class="title"><a href="<?php echo home_url( '/' ); ?>recent-reviews"><img src="<?php bloginfo('template_url'); ?>/dist/images/list-title-icon.jpg" alt=""/>RECENT REVIEWS</a></h3>
+        <ul class="listRecentReview">
+            <?php
+            if ( have_posts() ) : query_posts('&category_name=recent-reviews&offset=0&posts_per_page=5');
+                while ( have_posts() ) : the_post();
+                    $post_id = get_the_ID();
+                    include(locate_template('templates/box_title_text_date_vote.php'));
+                endwhile;
+            endif; ?>
+        </ul>
     </div>
   </div>
 </div>
