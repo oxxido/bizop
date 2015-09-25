@@ -35,7 +35,8 @@
     <div class="wrapper clearfix">
         <?php if(get_field('about_us_text','options')): ?>
             <div class="ftBox about">
-                <h3><a href="<?php echo esc_url( home_url( '/' ) ); ?>about-us/">About Us</a></h3>
+                <!-- <h3><a href="<?php echo esc_url( home_url( '/' ) ); ?>about-us/">About Us</a></h3> -->
+                <h3><a href="<?php echo esc_url( home_url( '/' ) ); ?>newsletter/">Newsletter</a></h3>
                 <?php the_field('about_us_text','options'); ?>
             </div>
         <?php endif; ?>
