@@ -24,11 +24,12 @@
         //]]>
     </script>
     <div class="wrapper newsletter newsletter-subscription">
-        <form method="post" action="/wp-content/plugins/newsletter/do/subscribe.php" onsubmit="return newsletter_check(this)">
-            <span class="label">Subscribe to our FREE e-newsletter and learn how you can make money today</span>
-            <input class="inputBox" type="email" name="ne" size="30" placeholder="Email Address" required >
-            <input class="button orgbut" type="submit" value="GO"/>
-        </form>
+       <?php //  <form method="post" action="/wp-content/plugins/newsletter/do/subscribe.php" onsubmit="return newsletter_check(this)"> ?>
+            
+<?php /*            <input class="inputBox" type="email" name="ne" size="30" placeholder="Email Address" required >
+            <input class="button orgbut" type="submit" value="GO"/> */ ?>
+<?php echo do_shortcode('[contact-form-7 id="402" title="Contact form 1"]'); ?>
+	<?php //        </form> ?>
     </div>
 </div>
 <footer id="footer" role="contentinfo">
@@ -43,19 +44,17 @@
 
 
         <!-- newsletter instead of about us-->
-        <?php if ( have_posts() ) : query_posts('&category_name=newsletter&offset=0'); ?>
-            <div class="ftBox about">
+        <div class="ftBox about">
             <h3><a href="<?php echo esc_url( home_url( '/' ) ); ?>newsletter/">Newsletter</a></h3>
-              <ul  class="links">
-              <?php while ( have_posts() ) : the_post();?>
-                  <li>
-                      <a class="title" href="<?php echo get_permalink($post->ID) ?>"><?php the_title(); ?></a>
-                      
-                  </li>
-              <?php endwhile; ?>
-              </ul>
-            </div>
-          <?php endif; ?>
+            <?php query_posts(array('category_name'=>'newsletter', 'showposts' => '4', 'order' => 'ASC') ); ?>
+            <?php if (have_posts()) { ?>
+                <ul class="links">
+                    <?php  while (have_posts()){ the_post(); ?>
+                    <li><a href="<?php the_permalink(); ?>" class="title"><?php the_title(); ?></a>
+                        <?php } ?>
+                </ul>
+            <?php } ?>
+        </div>
         <!-- END newsletter-->
 
         <?php wp_reset_query(); ?>

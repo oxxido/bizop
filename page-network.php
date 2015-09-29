@@ -3,7 +3,11 @@
  * Template Name: Network Page
  */
 ?>
-<?php get_template_part('templates/banner_pages'); ?>
+<?php get_template_part('templates/banner_pages');
+$search = array(1,2,3,4);
+$is_pro_platinum = Am_Lite::getInstance()->haveSubscriptions($search);
+if ($is_pro_platinum == 1) {
+?>
 <div class="wrapper pageMiddle">
   <p class="lead small">You may have a great offer or campaign in mind, but the network you run offers or advertise on can make all the difference in your success. We will find the networks that have the fastest payouts, highest EPCs, and pre-approved offers that actually convert! Additionally, we will let you know of the networks you probably should avoid, so you feel confident in your affiliate network choice(s). Below, you will find ours and member's approved recommendations for
     networks. These include comparative reviews as well as in-depth dives into what works and what doesn’t for many popular or niche networks.</p>
@@ -17,3 +21,8 @@
       endif; ?>
   </ul>
 </div>
+<?php }else{ ?>
+    <script>
+        window.location.href = "<?php echo esc_url( home_url( '/' ) )."amember/login/"; ?>";
+    </script>
+<?php } ?>

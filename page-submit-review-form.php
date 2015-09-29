@@ -10,7 +10,11 @@
 
 <?php
 $search = array(3,4);
-$is_pro_platinum= Am_Lite::getInstance()->haveSubscriptions($search)   ;
+$is_pro_platinum= Am_Lite::getInstance()->haveSubscriptions($search);
+
+$search = array(1,2);
+$is_free= Am_Lite::getInstance()->haveSubscriptions($search);
+
 if ($is_pro_platinum == 1){ ?>
   <p class="leadBlack">Selected reviews that are voted up will be included in Dave’s Picks on a weekly basis. 
     Check back frequently to see if your review is selected.
@@ -97,9 +101,14 @@ if ($is_pro_platinum == 1){ ?>
     }
 </script>
 
-<?php }else{?>
+<?php }else if ($is_free == 1){?>
     <p class="lead small">
         Only PRO and PLATINUM members can submit reviews for Biz Op Reports. If you have a free account and would like to upgrade to Pro or Platinum, you can do so <a href="<?php echo esc_url( home_url( '/' ) ); ?>amember/signup/">here</a>!
     </p>
 </div>
+<?php }else{ ?>
+</div>
+    <script>
+        window.location.href = "<?php echo esc_url( home_url( '/' ) )."amember/login/"; ?>";
+    </script>
 <?php } ?>

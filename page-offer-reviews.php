@@ -4,7 +4,11 @@
  *
  */
 ?>
-<?php get_template_part('templates/banner_pages'); ?>
+<?php get_template_part('templates/banner_pages');
+$search = array(1,2,3,4);
+$is_pro_platinum = Am_Lite::getInstance()->haveSubscriptions($search);
+if ($is_pro_platinum == 1) {
+?>
 <div class="wrapper pageMiddle">
   <p class="lead small">Not all offers are created equal. It might come in handy to have the segmentation of mobile vs. desktop offers, and even further knowledge of what creative
 performs best for each offer. We look for clicks, conversions, and payouts to make sure you don’t waste time and money running offers that don’t convert!
@@ -64,3 +68,10 @@ We hope you find these approved reviews from ourselves and others useful, and lo
       endif; ?>
   </ul>
 </div>
+<?php }else{ ?>
+    <script>
+        //jQuery(document).ready(function(){
+            window.location.href = "<?php echo esc_url( home_url( '/' ) )."amember/login/"; ?>";
+        //})
+    </script>
+<?php } ?>

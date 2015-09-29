@@ -31,7 +31,7 @@ foreach ($sage_includes as $file) {
 }
 unset($file, $filepath);
 
-
+/*Clear Admin Bar*/
 show_admin_bar(false);
 
 function permalink_url($id){
@@ -45,7 +45,26 @@ function permalink_url($id){
     return $u;
 }
 
+/*ShortCode uri*/
+function wpse_66026_theme_uri_shortcode( $attrs = array (), $content = '' )
+{
+    $theme_uri = is_child_theme()
+        ? get_stylesheet_directory_uri()
+        : get_template_directory_uri();
 
+    return trailingslashit( $theme_uri );
+}
+
+function wpse_66026_page_uri_shortcode( $attrs = array (), $content = '' )
+{
+    return trailingslashit( home_url( '/' ) );
+}
+
+add_shortcode('theme_uri', 'wpse_66026_theme_uri_shortcode' );
+add_shortcode('page_uri', 'wpse_66026_page_uri_shortcode' );
+
+
+/*Limit words*/
 function limitar_palabras( $str, $num, $append_str='' ) {
     $palabras = preg_split( '/[\s]+/', $str, -1, PREG_SPLIT_OFFSET_CAPTURE );
     if( isset($palabras[$num][1]) ){
@@ -55,8 +74,12 @@ function limitar_palabras( $str, $num, $append_str='' ) {
     return trim( $str );
 }
 
+/*Get Session on aMember*/
 session_start();
 $au = Am_Lite::getInstance();
+
+
+/*Custom Fields*/
 
 if(function_exists("register_field_group"))
 {
@@ -183,6 +206,24 @@ if(function_exists("register_field_group"))
                 'formatting' => 'html',
                 'maxlength' => '',
             ),
+            array (
+                    'key' => 'field_55ec739c7ce75',
+                    'label' => 'Default Page Banner',
+                    'name' => 'default_page_banner',
+                    'type' => 'image',
+                    'save_format' => 'url',
+                    'preview_size' => 'full',
+                    'library' => 'all'
+            ),
+            array (
+                'key' => 'field_55ec739c7ce76',
+                'label' => 'aMember Page Banner',
+                'name' => 'amember_page_banner',
+                'type' => 'image',
+                'save_format' => 'url',
+                'preview_size' => 'full',
+                'library' => 'all'
+            )
         ),
         'location' => array (
             array (
@@ -216,6 +257,18 @@ if(function_exists("register_field_group"))
                 'preview_size' => 'full',
                 'library' => 'all',
             ),
+            array (
+                'key' => 'field_55edbf5a9f16a',
+                'label' => 'Text Banner',
+                'name' => 'text_banner',
+                'type' => 'text',
+                'default_value' => '',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'formatting' => 'html',
+                'maxlength' => '',
+            ),
         ),
         'location' => array (
             array (
@@ -237,9 +290,10 @@ if(function_exists("register_field_group"))
         'menu_order' => 0,
     ));
 }
+/*END Custom Fields*/
 
+/*Function to accept Ajax form*/
 add_action( 'wp_ajax_my_action', 'wpse_126886_ajax_handler' );
-
 function wpse_126886_ajax_handler() {
 
     $search = array(3,4);
@@ -280,3 +334,67 @@ function wpse_126886_ajax_handler() {
 
     exit; // important
 }
+
+/*Add Video Embedded if isset*/
+add_filter( 'the_content', 'wpse_66026_my_editor_content' );
+function wpse_66026_my_editor_content( $content ) {
+
+    $search = array(3,4);
+    $is_pro_platinum = Am_Lite::getInstance()->haveSubscriptions($search);
+    if ($is_pro_platinum == 1) {
+        if ( get_field('video_embedded') != "" ){
+            $video_code = str_replace("watch?v=", "embed/", get_field('video_embedded'));
+            $content = '<iframe width="1280" height="720" src="'.$video_code.'" frameborder="0" allowfullscreen></iframe>'.$content;
+        }
+    }
+    return $content;
+}
+
+/*ShortCode button for video
+
+// init process for registering our button
+add_action('init', 'wpse72394_shortcode_button_init');
+function wpse72394_shortcode_button_init() {
+
+    //Abort early if the user will never see TinyMCE
+    if ( ! current_user_can('edit_posts') && ! current_user_can('edit_pages') && get_user_option('rich_editing') == 'true')
+        return;
+
+    //Add a callback to regiser our tinymce plugin
+    add_filter("mce_external_plugins", "wpse72394_register_tinymce_plugin");
+
+    // Add a callback to add our button to the TinyMCE toolbar
+    add_filter('mce_buttons', 'wpse72394_add_tinymce_button');
+}
+
+
+//This callback registers our plug-in
+function wpse72394_register_tinymce_plugin($plugin_array) {
+    $theme_uri = is_child_theme()
+        ? get_stylesheet_directory_uri()
+        : get_template_directory_uri();
+
+    $plugin_array['wpse72394_button'] = $theme_uri.'/dist/scripts//video_shortcode.js';
+    return $plugin_array;
+}
+
+//This callback adds our button to the toolbar
+function wpse72394_add_tinymce_button($buttons) {
+    //Add the button ID to the $button array
+    $buttons[] = "wpse72394_button";
+    return $buttons;
+}
+
+
+function wpse_66026_video_embedded( $attrs = array (), $content = '' )
+{
+    $r = "";
+    if ( get_field('video_embedded') != "" ){
+        $video_code = str_replace("watch?v=", "embed/", get_field('video_embedded'));
+        $r = '<iframe width="1280" height="720" src="'.$video_code.'" frameborder="0" allowfullscreen></iframe>';
+    }
+    return $r;
+}
+
+add_shortcode('video-embedded', 'wpse_66026_video_embedded' );
+*/
