@@ -17,8 +17,7 @@ $top_campaign_reviews = get_category_by_slug( 'top-campaign-reviews' );
                 <h1>Member Dashboard</h1>
                 <h3>Registered User: <span><?= $au->getName()?></span></h3>
             <?php }else{ ?>
-                <h1>Stop Wasting Money on Programs That Don’t Work!</h1>
-                <h4>Subscribe Today To Avoid The Pitfalls In Online Marketing!</h4>
+                <h1>Start Investing Time and Money In the Right Opportunities!</h1>
                 <a href="<?php echo esc_url( home_url( '/' ) ); ?>amember/signup"><img class="btn" src="<?php echo get_template_directory_uri(); ?>/dist/images/subscribe-today-but.png" alt="" /></a>
             <?php } ?>
             </div>
@@ -28,7 +27,7 @@ $top_campaign_reviews = get_category_by_slug( 'top-campaign-reviews' );
 
 <div class="wrapper pageMiddle">
     <div id="businessTips" class="listinhome">
-        <h2 class="listTitle"><img class="btn" src="<?php echo get_template_directory_uri(); ?>/dist/images/business-tips-ico.png" alt="" /> TOP BUSINESS TIPS</h2>
+        <h2 class="listTitle"><img class="btn" src="<?php echo get_template_directory_uri(); ?>/dist/images/business-tips-ico.png" alt="" /> TOP BUSINESS VIDEO TIPS</h2>
         <ul class="reviewList clearfix">
             <?php
             //$cat_businessTips_IDs = get_category_by_slug('business-tips')->term_id;

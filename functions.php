@@ -350,6 +350,16 @@ function wpse_66026_my_editor_content( $content ) {
     return $content;
 }
 
+function product_user(){
+    $user = 0;
+    for ($i = 1; $i = 5; $i++){
+        $search = array($i);
+        $product_user = Am_Lite::getInstance()->haveSubscriptions($search);
+        if ($product_user){ $user = $i; }
+    }
+    return $user;
+}
+
 /*ShortCode button for video
 
 // init process for registering our button
@@ -398,3 +408,6 @@ function wpse_66026_video_embedded( $attrs = array (), $content = '' )
 
 add_shortcode('video-embedded', 'wpse_66026_video_embedded' );
 */
+
+
+add_image_size( 'video-thumbnail', '214', '115', array( "1", "") ); 

@@ -1,10 +1,11 @@
 <?php
-if ( get_field('video_embedded') != "" ){
+if(1 == 2 ){ // ( get_field('video_embedded') != "" ){
     $video_code = str_replace("www.youtube.com/watch?v=", "i1.ytimg.com/vi/", get_field('video_embedded') );
     $img = $video_code.'/default.jpg';
 }else{
-    $img = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
- }
+    $img = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'video-thumbnail' ); 
+    $img = $img[0];
+}
 //$img = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
 ?>
 <li>
